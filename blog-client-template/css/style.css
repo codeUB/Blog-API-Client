@@ -7,8 +7,13 @@ body {
     color: black;
     font-size: 82px;
     font-weight: bolder;
+    font-style: none;
+    text-decoration:overline;
   }
 
-  a, a:active, a:hover {
-      color: black;
-  }
+  
+
+  a:link { text-decoration: none; color: black; }
+  a:visited { text-decoration: none; color: black; }
+  a:hover { text-decoration: none; color: black; }
+  a:active { text-decoration: none; color: black; }
