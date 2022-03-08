@@ -15,7 +15,7 @@ async function fetchPosts() {
             html += `
                 <div class="col-sm m-5 shadow">
                     <h2>${post.title}</h2>
-                    <p>${post.author} - ${post.date}</p>
+                    <p>${post.author} - ${post.date.substring(0, 10)}</p>
                     <blockquote class="blockquote fst-italic fw-light">"${post.content.substring(0, 100)}"</blockquote>
                     <a href="#">Läs mer!</a>
                 </div>
