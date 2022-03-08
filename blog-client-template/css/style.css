@@ -8,3 +8,7 @@ body {
     font-size: 82px;
     font-weight: bolder;
   }
+
+  a, a:active, a:hover {
+      color: black;
+  }
