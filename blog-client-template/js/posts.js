@@ -60,7 +60,7 @@ window.onload = function() {
                         <p>${author} - ${post.date.substring(0, 10)}</p>
                         <blockquote class="blockquote fst-italic fw-light">"${text}"</blockquote>
                         <p>${tag}</p>
-                        <a href="#">Läs mer!</a>
+                        <a href="post.html?id=${post._id}">Läs mer!</a>
                     </div>
                 `
             }
