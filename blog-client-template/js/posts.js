@@ -18,8 +18,8 @@ window.onload = function() {
                 const tags = post.tags;
                 let tag    = "";
                 let author = "";
-                let title = "";
-                let x = "";
+                let title  = "";
+                let text   = "";
     
                 // Ändrar till "okänd författare" om post.author är null
                 if (post.author == null) {
@@ -46,12 +46,19 @@ window.onload = function() {
                         title = anotherdata[Math.floor(Math.random() * anotherdata.length)].quote;  
                     }
                 }
+
+                // Undviker att visa tomma inlägg, lägger en dummy text istället
+                if (post.content == null) {
+                    text = "Författaren har inte skrivit någon text. Så vi lägger till den här texten istället, så blir det inte tomt på sidan.";
+                } else {
+                    text = post.content.substring(0, 100);
+                }
     
                 html += `
                     <div class="col-sm m-5 p-5 shadow bg-white">
                         <h2>${title}</h2>
                         <p>${author} - ${post.date.substring(0, 10)}</p>
-                        <blockquote class="blockquote fst-italic fw-light">"${post.content.substring(0, 100)}"</blockquote>
+                        <blockquote class="blockquote fst-italic fw-light">"${text}"</blockquote>
                         <p>${tag}</p>
                         <a href="#">Läs mer!</a>
                     </div>
