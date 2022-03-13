@@ -33,6 +33,8 @@ window.onload = function() {
                     tag = tags;
                 }
                 
+                // Här tar vi bort titlar som är null eller kortare än 10 bokstäver. 
+                // Är titeln kort så hämtar vi en random titel från ett clickbait API.
                 if (post.title && post.title.length > 10) {
                     title = post.title;
                 } else {
