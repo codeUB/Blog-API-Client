@@ -11,9 +11,13 @@ window.onload = function() {
             
     
             let html = ''
-    
+            let tagsSection = document.getElementById("tags");
+            
+ 
             for (let post of posts) {
                
+             
+    
     
                 const tags = post.tags;
                 let tag    = "";
@@ -31,6 +35,15 @@ window.onload = function() {
                 // Visar bara taggar som inte är null
                 if (tags != null) {
                     tag = tags;
+
+
+                    
+                    tagsSection.innerHTML += ` 
+                    <div class="chip chip-md  secondary-color white-text example z-depth-2 mr-0">
+                        <i class="fab fa-bootstrap fa-lg"></i>
+                            &nbsp;&nbsp;${post.tags}
+                        <i class="close white-text fas fa-times"></i>
+                    </div>`;
                 }
                 
                 // Här tar vi bort titlar som är null eller kortare än 10 bokstäver. 
