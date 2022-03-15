@@ -1,5 +1,39 @@
 window.onload = function() {
     fetchPosts ();
+    fetchTags();
+}
+
+
+async function fetchTags(){
+    try {
+        const data = await fetch('http://localhost:5000/posts')
+        const tags = await data.json();
+
+        let tagsSection = document.getElementById("tags");
+
+        for (let tag of tags){
+            if(tag.tags != null && tag.tags != ""){
+
+                tag.tags.forEach(myFunction);
+
+                function myFunction(value, index, array) {
+                let uniTags = value;
+
+                tagsSection.innerHTML += ` 
+                <a class="btn btn-rounded m-1" href="#" role="button">${value}</a>
+            `;     
+                }
+            }
+
+    
+ 
+        }
+
+    }       
+    
+    catch(error) {
+        console.log(error)
+    }
 }
 
 
@@ -11,15 +45,12 @@ window.onload = function() {
             
     
             let html = ''
-            let tagsSection = document.getElementById("tags");
+            
             
  
             for (let post of posts) {
                
-             
-    
-    
-                const tags = post.tags;
+            
                 let tag    = "";
                 let author = "";
                 let title  = "";
@@ -31,20 +62,7 @@ window.onload = function() {
                 } else {
                     author = post.author;
                 }
-    
-                // Visar bara taggar som inte är null
-                if (tags != null) {
-                    tag = tags;
 
-
-                    
-                    tagsSection.innerHTML += ` 
-                    <div class="chip chip-md  secondary-color white-text example z-depth-2 mr-0">
-                        <i class="fab fa-bootstrap fa-lg"></i>
-                            &nbsp;&nbsp;${post.tags}
-                        <i class="close white-text fas fa-times"></i>
-                    </div>`;
-                }
                 
                 // Här tar vi bort titlar som är null eller kortare än 10 bokstäver. 
                 // Är titeln kort så hämtar vi en random titel från ett clickbait API.
@@ -66,7 +84,14 @@ window.onload = function() {
                 } else {
                     text = post.content.substring(0, 100);
                 }
-    
+
+                // Visar bara taggar som inte är null
+                if (post.tags != null || post.tags != "") {
+                    tag = post.tags;
+                } else {
+                    tag = "";
+                }
+
                 html += `
                     <div class="col-sm m-5 p-5 shadow bg-white">
                         <h2>${title}</h2>
@@ -77,6 +102,7 @@ window.onload = function() {
                     </div>
                 `
             }
+        
             document.getElementById('post-list').innerHTML = html;
           
         } catch(error) {
