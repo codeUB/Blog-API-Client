@@ -85,9 +85,13 @@ async function fetchTags(){
                     tag = "";
                 }
 
+                // Genererar ett random ID så att vi kan hämta en random bild
+                let imgId = Math.floor(Math.random() * 1000);
+
                 html += `
                     <div class="col-sm m-5 p-5 shadow bg-white">
                         <h2>${title}</h2>
+                        <img src="https://picsum.photos/id/${imgId}/600/300">
                         <p>${author} - ${post.date.substring(0, 10)}</p>
                         <blockquote class="blockquote fst-italic fw-light">"${text}"</blockquote>
                         <p>${tag}</p>
