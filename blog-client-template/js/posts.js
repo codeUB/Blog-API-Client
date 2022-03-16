@@ -1,36 +1,31 @@
 window.onload = function() {
     fetchPosts ();
     fetchTags();
-}
 
+}
 
 async function fetchTags(){
     try {
         const data = await fetch('http://localhost:5000/posts')
-        const tags = await data.json();
+        const post = await data.json();
 
         let tagsSection = document.getElementById("tags");
 
-        for (let tag of tags){
+        for (let tag of post){
+
             if(tag.tags != null && tag.tags != ""){
 
                 tag.tags.forEach(myFunction);
-
                 function myFunction(value, index, array) {
-                let uniTags = value;
-
+                
                 tagsSection.innerHTML += ` 
-                <a class="btn btn-rounded m-1" href="#" role="button">${value}</a>
-            `;     
+                    <a class="btn btn-rounded m-1" href="#" role="button">${value}</a>
+                `;      
+
                 }
             }
-
-    
- 
         }
-
     }       
-    
     catch(error) {
         console.log(error)
     }
@@ -45,9 +40,7 @@ async function fetchTags(){
             
     
             let html = ''
-            
-            
- 
+
             for (let post of posts) {
                
             
