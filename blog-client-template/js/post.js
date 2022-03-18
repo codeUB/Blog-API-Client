@@ -39,8 +39,7 @@ async function fetchPost(id,titleId) {
                 tag = "";
             }
             
-            // Here we remove titles that are null or shorter then 10 letters 
-            // If that happens, we fetch a random title from a clickbait API
+            // Now we get the title, and eventually the clickbait title
             if (post.title && post.title.length > 10) {
                 title = post.title;
             } else {
